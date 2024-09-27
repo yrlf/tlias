@@ -4,8 +4,10 @@ import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;
 
 import java.io.IOException;
-@WebFilter("/*")
-public class DemoFilter implements Filter {
+//@WebFilter("/2")
+public class DemoFilter implements Filter { // 过滤器的顺序是按照类名称排序的, D 开头的就没有 AbcFilter 早, 因为 A 字典序早
+    // 1. 判断是否是登录请求,
+    // 2. 如果是, 放行, 不是, 校验
 
     @Override // 初始化方法,只会被调用 1 次
     public void init(FilterConfig filterConfig) throws ServletException {
